@@ -17,6 +17,10 @@ $this->title = Yii::$app->name;
                 <div class="page-header">
                     <h1><?= $this->title ?> task</h1>
                 </div>
+                <div class="well">
+                    <p> Ссылка на репозиторий:
+                        <a href="https://github.com/superrosko/regru-yii2">superrosko/regru-yii2</a></p>
+                </div>
             </div>
         </div>
 
