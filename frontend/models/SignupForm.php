@@ -10,8 +10,11 @@ use common\models\User;
  */
 class SignupForm extends Model
 {
-    public $username;
+    public $fio;
     public $email;
+    public $type;
+    public $inn;
+    public $organisation;
     public $password;
 
 
@@ -21,16 +24,34 @@ class SignupForm extends Model
     public function rules()
     {
         return [
-            ['username', 'trim'],
-            ['username', 'required'],
-            ['username', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This username has already been taken.'],
-            ['username', 'string', 'min' => 2, 'max' => 255],
+            ['fio', 'trim'],
+            ['fio', 'required'],
+            ['fio', 'string', 'min' => 2, 'max' => 255],
 
             ['email', 'trim'],
             ['email', 'required'],
             ['email', 'email'],
             ['email', 'string', 'max' => 255],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => 'This email address has already been taken.'],
+
+            ['type', 'boolean'],
+
+            ['organisation', 'trim'],
+            ['organisation', 'string', 'min' => 2, 'max' => 255],
+            ['organisation', 'required',
+                'when' => function($model) {
+                    return $model->type;
+                },
+                'enableClientValidation' => false,
+            ],
+
+            ['inn', 'integer'],
+            ['inn', 'required',
+                'when' => function($model) {
+                    return $model->type;
+                },
+                'enableClientValidation' => false,
+            ],
 
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
@@ -49,8 +70,12 @@ class SignupForm extends Model
         }
         
         $user = new User();
-        $user->username = $this->username;
+        $user->username = $this->email;
+        $user->fio = $this->fio;
         $user->email = $this->email;
+        $user->type = $this->type;
+        $user->inn = $this->inn;
+        $user->organisation = $this->organisation;
         $user->setPassword($this->password);
         $user->generateAuthKey();
         $user->generateEmailVerificationToken();
