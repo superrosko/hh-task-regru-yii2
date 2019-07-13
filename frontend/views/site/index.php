@@ -11,7 +11,7 @@ $this->title = Yii::$app->name;
 ?>
 <div class="site-index">
     <div class="body-content">
-        
+
         <div class="row">
             <div class="col-12">
                 <div class="page-header">
@@ -141,7 +141,32 @@ function ($date, $type)
                         запросов, чтобы закешировать уже результирующий массив.</p>
                 </div>
             </div>
+        </div>
 
+        <div class="row">
+            <div class="col-12">
+                <div class="page-header">
+                    <h2>Task 3</h2>
+                </div>
+                <div class="well">
+                    <p>Схематично описать структуру таблиц для хранения информации о медикаментах со следующими
+                        требованиями: лекарство имеет название, срок годности и список болезней, при которых это
+                        лекарство можно применять. </p>
+                </div>
+                <div class="page-header">
+                    <h2>Solution</h2>
+                </div>
+                <div class="well">
+                    <p><img src="/images/regru_task3_schema.png" alt="regru_task3_schema" class="page-image"></p>
+                    <p>Создано 4 миграции для 4х таблиц.</p>
+                    <p>Таблица medicines - хранит названия лекарств.</p>
+                    <p>Таблица disease - хранит названия болезней.</p>
+                    <p>Таблица medicines_disease - хранит связи между medicines и disease, т.к. одно лекарство может
+                        лечить несколько болезней (сделано такое предположение) и наоборот.</p>
+                    <p>Таблица medicines_stock - хранит связь с medicines и срок годности (сделано предположение что это
+                        склад medicines).</p>
+                </div>
+            </div>
         </div>
     </div>
 </div>
