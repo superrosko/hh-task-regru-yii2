@@ -1,0 +1,17 @@
+# shellcheck disable=SC2034
+DIR=$( cd "$(dirname "$0")" && pwd )
+
+# APP Configuration
+APP_NAME="hr-task-regru-yii2"
+APP_ENV="dev"
+
+# DATABASE Configuration
+DB_NEW_USER="hr-task-regru-yii2-user"
+DB_NEW_PASSWORD="password"
+DB_DATABASE="hr-task-regru-yii2-db"
+
+# SSL Configuration
+SSL_DIR="$DIR/../ssl"
+SSL_HOST="localhost"
+SSL_BITS=4096
+SSL_EXPIRED=3650

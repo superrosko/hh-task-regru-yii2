@@ -1,38 +1,94 @@
-version: '3.2'
-
+version: '3'
 services:
 
-  frontend:
-    build: frontend
-    ports:
-      - 20080:80
-    volumes:
-      # Re-use local composer cache via host-volume
-      - ~/.composer-docker/cache:/root/.composer/cache:delegated
-      # Mount source-code for development
-      - ./:/app
-
-  backend:
-    build: backend
-    ports:
-      - 21080:80
-    volumes:
-      # Re-use local composer cache via host-volume
-      - ~/.composer-docker/cache:/root/.composer/cache:delegated
-      # Mount source-code for development
-      - ./:/app
-
-  mysql:
-    image: mysql:5.7
+  #PHP Service
+  hr-task-regru-yii2-php:
+    build:
+      context: .
+      dockerfile: docker/services/php/Dockerfile
+    image: superrosko/php:7.4-fpm
+    container_name: hr-task-regru-yii2-php
+    restart: unless-stopped
+    tty: true
     environment:
-      - MYSQL_ROOT_PASSWORD=verysecret
-      - MYSQL_DATABASE=yii2advanced
-      - MYSQL_USER=yii2advanced
-      - MYSQL_PASSWORD=secret
+      SERVICE_NAME: hr-task-regru-yii2-php
+      SERVICE_TAGS: dev
+    networks:
+      - internal
 
-  #pgsql:
-  #  image: postgres:9.5
-  #  environment:
-  #    - POSTGRES_DB=yii2advanced
-  #    - POSTGRES_USER=yii2advanced
-  #    - POSTGRES_PASSWORD=secret
+  #App Service
+  hr-task-regru-yii2-app:
+    build:
+      context: .
+      dockerfile: docker/services/app/Dockerfile
+    image: superrosko/hr-task-regru-yii2
+    container_name: hr-task-regru-yii2-app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: hr-task-regru-yii2-app
+      SERVICE_TAGS: dev
+      XDEBUG_CONFIG: remote_host=winhost
+      PHP_IDE_CONFIG: serverName=hr-task-regru-yii2.localhost
+    working_dir: /var/www
+    ports:
+      - "9000:9000"
+    volumes:
+      - ./:/var/www
+      - ./docker/services/app/conf/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./docker/services/app/conf/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - internal
+    depends_on:
+      - hr-task-regru-yii2-php
+      - hr-task-regru-yii2-mysql
+
+  #Nginx Service
+  hr-task-regru-yii2-nginx:
+    image: nginx:alpine
+    container_name: hr-task-regru-yii2-nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./:/var/www
+      - ./docker/ssl/:/etc/nginx/ssl/
+      - ./docker/services/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/services/nginx/conf/conf.d/:/etc/nginx/conf.d/
+      - ./docker/services/nginx/conf/configs/:/etc/nginx/configs/
+    networks:
+      - internal
+    depends_on:
+      - hr-task-regru-yii2-app
+
+  #MySQL Service
+  hr-task-regru-yii2-mysql:
+    image: mysql:5.7.30
+    container_name: hr-task-regru-yii2-mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_DATABASE: hr-task-regru-yii2-db
+      MYSQL_ROOT_PASSWORD: password
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./docker/services/mysql/conf/my.cnf:/etc/mysql/my.cnf
+      - ./docker/services/mysql/conf/config.cnf:/etc/mysql/config.cnf
+    networks:
+      - internal
+
+#Docker Volumes
+volumes:
+  mysql-data:
+    driver: local
+
+#Docker Networks
+networks:
+  internal:
+    driver: bridge
