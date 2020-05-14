@@ -9,6 +9,27 @@
 
 Reg.ru yii2 hr task.
 
+## Requirements
+
+- Nginx 1.14.0
+- MySQL 5.7.30
+- Node 10.16.0
+- PHP >= 5.4.0
+  - Reflection PHP Extension
+  - PCRE PHP Extension
+  - SPL PHP Extension
+  - Ctype PHP Extension
+  - Mbstring PHP Extension
+  - OpenSSL PHP Extension
+  - Intl PHP Extension
+  - Fileinfo PHP Extension
+  - DOM PHP Extension
+
+Run for check server:
+```bash
+php requirements.php
+```
+
 ## Installation
 
 ### Docker
