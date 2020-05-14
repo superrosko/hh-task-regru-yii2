@@ -9,6 +9,20 @@
 
 Reg.ru yii2 hr task.
 
+## Installation
+
+### Docker
+
+#### Git clone
+```bash
+git clone git@github.com:superrosko/hr-task-regru-yii2.git .
+```
+
+#### Run initialization
+```bash
+make init
+```
+
 ## Credits
 
 - [Dmitriy Bespalov][link-author]
