@@ -23,6 +23,48 @@ git clone git@github.com:superrosko/hr-task-regru-yii2.git .
 make init
 ```
 
+
+## Usage
+
+### Docker
+
+Restart docker compose:
+```bash
+make compose_restart
+```
+Generating ssl certificates:
+```bash
+make ssl_gen
+```
+Install dependencies:
+```bash
+make deps_install
+```
+Update dependencies:
+```bash
+make deps_update
+```
+App configuration:
+```bash
+make app_config
+```
+Create new database user if not exists:
+```bash
+make db_create_user
+```
+Execute mysql cli:
+```bash
+make db_exec
+```
+Apply migrations:
+```bash
+make db_migration
+```
+App initialization: 
+```bash
+make init
+```
+
 ## Credits
 
 - [Dmitriy Bespalov][link-author]
