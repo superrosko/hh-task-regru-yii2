@@ -16,5 +16,4 @@ db_migration:
 	./docker/scripts/db_migration.sh
 init:
 	./docker/scripts/init.sh
-deploy:
-	./docker/scripts/deploy.sh
+
