@@ -14,6 +14,6 @@ db_exec:
 	./docker/scripts/db_exec.sh
 db_migration:
 	./docker/scripts/db_migration.sh
-init:
-	./docker/scripts/init.sh
+initial:
+	./docker/scripts/initial.sh
 

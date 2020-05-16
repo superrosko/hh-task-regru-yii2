@@ -3,4 +3,4 @@
 ./docker/scripts/deps_install.sh
 ./docker/scripts/app_config.sh
 ./docker/scripts/db_create_user.sh
-./docker/scripts/db_migration_reset.sh
+./docker/scripts/db_migration.sh
