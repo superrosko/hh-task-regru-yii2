@@ -14,7 +14,7 @@ Reg.ru yii2 hr task.
 - Nginx 1.14.0
 - MySQL 5.7.30
 - Node 10.16.0
-- PHP >= 5.4.0
+- PHP >= 5.6.0
   - Reflection PHP Extension
   - PCRE PHP Extension
   - SPL PHP Extension
