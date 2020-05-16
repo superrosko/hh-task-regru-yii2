@@ -41,7 +41,7 @@ git clone git@github.com:superrosko/hr-task-regru-yii2.git .
 
 #### Run initialization
 ```bash
-make init
+make initial
 ```
 
 
@@ -83,7 +83,7 @@ make db_migration
 ```
 App initialization: 
 ```bash
-make init
+make initial
 ```
 
 ## Credits
