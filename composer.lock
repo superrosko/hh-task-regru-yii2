@@ -784,12 +784,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "a62f4404f0327f5a6f3f81e83bf9ff337c94c9a3"
+                "reference": "a06998970495426d6b0362d4bbbd343b2f1b9b6d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/a62f4404f0327f5a6f3f81e83bf9ff337c94c9a3",
-                "reference": "a62f4404f0327f5a6f3f81e83bf9ff337c94c9a3",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/a06998970495426d6b0362d4bbbd343b2f1b9b6d",
+                "reference": "a06998970495426d6b0362d4bbbd343b2f1b9b6d",
                 "shasum": ""
             },
             "require": {
@@ -890,7 +890,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-05-11T09:18:15+00:00"
+            "time": "2020-05-18T12:18:09+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -1708,12 +1708,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "c247bf84e343f0b95927fa86cf23b7ffc9af04f3"
+                "reference": "188cc82398f157483976ccf61bd04ee80afcf29c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/c247bf84e343f0b95927fa86cf23b7ffc9af04f3",
-                "reference": "c247bf84e343f0b95927fa86cf23b7ffc9af04f3",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/188cc82398f157483976ccf61bd04ee80afcf29c",
+                "reference": "188cc82398f157483976ccf61bd04ee80afcf29c",
                 "shasum": ""
             },
             "require": {
@@ -1771,7 +1771,7 @@
                 "uri",
                 "url"
             ],
-            "time": "2020-05-13T14:56:52+00:00"
+            "time": "2020-05-17T20:05:25+00:00"
         },
         {
             "name": "myclabs/deep-copy",
