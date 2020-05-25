@@ -1833,12 +1833,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/opis/closure.git",
-                "reference": "82cc21fefe5f4a56c7c29233129959cb005eb205"
+                "reference": "5a5be1187191f98778eac6b0ad78376bf41a4013"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/opis/closure/zipball/82cc21fefe5f4a56c7c29233129959cb005eb205",
-                "reference": "82cc21fefe5f4a56c7c29233129959cb005eb205",
+                "url": "https://api.github.com/repos/opis/closure/zipball/5a5be1187191f98778eac6b0ad78376bf41a4013",
+                "reference": "5a5be1187191f98778eac6b0ad78376bf41a4013",
                 "shasum": ""
             },
             "require": {
@@ -1886,7 +1886,7 @@
                 "serialization",
                 "serialize"
             ],
-            "time": "2020-05-22T23:01:01+00:00"
+            "time": "2020-05-25T12:41:42+00:00"
         },
         {
             "name": "phar-io/manifest",
