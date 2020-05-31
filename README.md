@@ -81,6 +81,10 @@ Apply migrations:
 ```bash
 make db_migration
 ```
+App php exec: 
+```bash
+make php_exec COMMAND="artisan"
+```
 App initialization: 
 ```bash
 make initial

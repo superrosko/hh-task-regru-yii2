@@ -14,6 +14,8 @@ db_exec:
 	./docker/scripts/db_exec.sh
 db_migration:
 	./docker/scripts/db_migration.sh
+php_exec:
+	./docker/scripts/php_exec.sh
 initial:
 	./docker/scripts/initial.sh
 
