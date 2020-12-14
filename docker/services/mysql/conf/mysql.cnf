@@ -1,0 +1,8 @@
+[mysqld]
+general_log = 1
+general_log_file = /var/lib/mysql/general.log
+secure-file-priv= NULL
+
+open_files_limit=1024
+max_connections=128
+table_open_cache=256

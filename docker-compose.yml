@@ -1,21 +1,6 @@
 version: '3'
 services:
 
-  #PHP Service
-  hr-task-regru-yii2-php:
-    build:
-      context: .
-      dockerfile: docker/services/php/Dockerfile
-    image: superrosko/php:7.4-fpm
-    container_name: hr-task-regru-yii2-php
-    restart: unless-stopped
-    tty: true
-    environment:
-      SERVICE_NAME: hr-task-regru-yii2-php
-      SERVICE_TAGS: dev
-    networks:
-      - internal
-
   #App Service
   hr-task-regru-yii2-app:
     build:
@@ -40,7 +25,6 @@ services:
     networks:
       - internal
     depends_on:
-      - hr-task-regru-yii2-php
       - hr-task-regru-yii2-mysql
 
   #Nginx Service
@@ -65,10 +49,11 @@ services:
 
   #MySQL Service
   hr-task-regru-yii2-mysql:
-    image: mysql:5.7.30
+    image: mysql:8.0
     container_name: hr-task-regru-yii2-mysql
     restart: unless-stopped
     tty: true
+    cap_add: [ SYS_NICE ]
     ports:
       - "3306:3306"
     environment:
@@ -78,7 +63,7 @@ services:
       SERVICE_NAME: mysql
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./docker/services/mysql/conf/my.cnf:/etc/mysql/my.cnf
+      - ./docker/services/mysql/conf/mysql.cnf:/etc/mysql/conf.d/mysql.cnf
       - ./docker/services/mysql/conf/config.cnf:/etc/mysql/config.cnf
     networks:
       - internal
